@@ -88,9 +88,10 @@ There are also options for even and odd depth/levels
 ### Rendering the menu
 
 To render your navigation menu simply set the group and use render method
+The first parameter of render method is your template, usage is the same as you use View::make();
 
-    Nav::group('admin.menu')->render('admin.partials.sidemenu');
+    Nav::group('admin.menu')->render('partials.sidemenu');
 
-If you want to cache your rendered menu for more performance pass a second parameter - minutes to keep the cache
+If you want to cache your rendered menu for more performance, pass a second parameter - minutes to keep the cache.
 
-    Nav::group('admin.menu')->render('admin.partials.sidemenu', 20); //cached for 20min
+    Nav::group('admin.menu')->render('partials.sidemenu', 20); //cached for 20min
