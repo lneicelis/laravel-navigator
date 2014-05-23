@@ -20,7 +20,7 @@ Add this to your facades in app.php:
 
 ## Usage
 
-# Adding items to navigator:
+### Adding items to navigator:
 
     //First level/depth items:
     //menu group - "menu", menu item - "auth", and variables of the template
@@ -37,10 +37,10 @@ Add this to your facades in app.php:
         'href'  => URL::action('Auth\GroupsController@getAll'),
     ]);
 
-# Setting a template
+### Setting a template
 
 Template for the first level/depth items
-
+Templates have a few element - @depth(), @foreach, @subgroup and variables you passed when adding element to the group
     @depth(1)
         <ul class="nav nav-list">
             @foreach
@@ -77,7 +77,7 @@ There are also options for even and odd depth/levels
     @depth(even)
     @depth(odd)
 
-# Rendering the menu
+### Rendering the menu
 
 To render your navigation menu simply set the group and use render method
 
