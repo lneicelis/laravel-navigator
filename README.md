@@ -40,7 +40,15 @@ Add this to your facades in app.php:
 ### Setting a template
 
 Template for the first level/depth items
-Templates have a few element - @depth(), @foreach, @subgroup and variables you passed when adding element to the group
+Templates have a few elements -
+ - @depth() ... @stop
+ - @foreach ... @endforeach
+ - @subgroup
+ - variables you passed when adding element to the group $title, $icon etc
+These parameters must be in every template, even though you don't need @subgroup you should use it anyway
+@subgroup should be placed there where you would have nested @foreach() ... @endforeach
+
+
     @depth(1)
         <ul class="nav nav-list">
             @foreach
