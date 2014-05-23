@@ -1,0 +1,20 @@
+{
+    "name": "luknei/navigator",
+    "description": "",
+    "authors": [
+        {
+            "name": "luknei",
+            "email": "l.neicelis@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Luknei\\Navigator": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
