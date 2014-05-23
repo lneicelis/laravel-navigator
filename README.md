@@ -48,7 +48,7 @@ Templates have a few elements -
 These parameters must be in every template, even though you don't need @subgroup you should use it anyway
 @subgroup should be placed there where you would have nested @foreach() ... @endforeach
 
-
+```
     @depth(1)
         <ul class="nav nav-list">
             @foreach
@@ -63,6 +63,7 @@ These parameters must be in every template, even though you don't need @subgroup
             @endforeach
         </ul>
     @stop
+```
 
 You can Set the default template for any level/depth item
 
