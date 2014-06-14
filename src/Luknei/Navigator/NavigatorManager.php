@@ -25,6 +25,11 @@ class NavigatorManager
     protected $group;
 
     /**
+     * @var bool
+     */
+    protected $itemsCollected = false;
+
+    /**
      * @var string
      */
     protected $defaultTemplateName = 'navigator::menu';
@@ -93,11 +98,13 @@ class NavigatorManager
      */
     public function render($name, $remember = null)
     {
-        /* If it's cached, then return cahced result*/
+        /* If it's cached, then return cached result */
         $cached = $this->cacheGet($name);
         if (!is_null($cached)) {
             return $cached;
         }
+
+        $this->collectItems();
 
         $compiledString = $this->compile($name);
 
@@ -109,6 +116,25 @@ class NavigatorManager
         return $compiledString;
     }
 
+    /**
+     * Collect items from service providers
+     *
+     * @return void
+     */
+    protected function collectItems()
+    {
+        if ($this->itemsCollected) return;
+
+        $collector = new NavigatorItemsCollector();
+        $collector->collect();
+
+        $this->itemsCollected = true;
+    }
+
+    /**
+     * @param $name
+     * @return string
+     */
     protected function compile($name)
     {
         /** @var FileViewFinder $viewFinder */

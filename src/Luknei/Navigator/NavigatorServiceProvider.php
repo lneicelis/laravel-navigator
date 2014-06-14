@@ -10,7 +10,7 @@ class NavigatorServiceProvider extends ServiceProvider {
 	 *
 	 * @var bool
 	 */
-	protected $defer = false;
+	protected $defer = true;
 
 	/**
 	 * Register the service provider.
@@ -24,6 +24,11 @@ class NavigatorServiceProvider extends ServiceProvider {
 		$this->app->bind('navigator', function($app){
 
             return new NavigatorManager($app);
+        });
+
+        $this->app->bindShared('navigator.collector', function($app)
+        {
+            return new NavigatorItemsCollector();
         });
 
         $this->app->bindShared('navigator.compiler', function($app)
@@ -41,7 +46,7 @@ class NavigatorServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array('navigator', 'navigator.collector', 'navigator.compiler');
 	}
 
 }
